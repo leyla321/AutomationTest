@@ -44,11 +44,11 @@ public class OtusAuthorization {
         WebElement email = driver.findElement(By.cssSelector("div[class='sc-rq8xzv-1 hGvqzc sc-11ptd2v-1 liHMCp'] div[class='sc-1ij08sq-0 fQxsKJ sc-rq8xzv-2 xkNdd']"));
         email.click();
         email = driver.findElement(By.cssSelector("input[name='email']"));
-        email.sendKeys("otus51423@mailto.plus");
+        email.sendKeys(username);
         WebElement password2 = driver.findElement(By.cssSelector(".sc-177u1yy-0.sc-rq8xzv-2.xkNdd"));
         password2.click();
         password2 = driver.findElement(By.cssSelector("input[type='password']"));
-        password2.sendKeys("12345678Qw1!");
+        password2.sendKeys(password);
         WebElement signInButton2 = driver.findElement(By.cssSelector(".sc-9a4spb-0.eQlGvH.sc-11ptd2v-2-Component.cElCrZ"));
         signInButton2.click();
         logger.info("Авторизация прошла успешно");
