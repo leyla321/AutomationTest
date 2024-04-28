@@ -25,7 +25,8 @@ public class OtusAuthorization {
         ChromeOptions options = new ChromeOptions();
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
-        driver.get("https://otus.ru");
+        String url = System.getProperty("url");
+        driver.get(url);
     }
 
     @AfterEach
@@ -36,18 +37,21 @@ public class OtusAuthorization {
 
     @Test
     public void loginToOtus() {
-        WebElement signInButton = driver.findElement(By.xpath("//button[text()='Войти']"));
+        String username = System.getProperty("username");
+        String password = System.getProperty("password");
+        WebElement signInButton = driver.findElement(By.cssSelector("button.sc-mrx253-0.enxKCy.sc-945rct-0.iOoJwQ"));
         signInButton.click();
-        WebElement email = driver.findElement(By.xpath("//div[./input[@name='email']]"));
+        WebElement email = driver.findElement(By.cssSelector("div[class='sc-rq8xzv-1 hGvqzc sc-11ptd2v-1 liHMCp'] div[class='sc-1ij08sq-0 fQxsKJ sc-rq8xzv-2 xkNdd']"));
         email.click();
-        email = driver.findElement(By.xpath("//input[@name='email']"));
+        email = driver.findElement(By.cssSelector("input[name='email']"));
         email.sendKeys("otus51423@mailto.plus");
-        WebElement password = driver.findElement(By.xpath("//div[./input[@type='password']]"));
-        password.click();
-        password = driver.findElement(By.xpath("//input[@type='password']"));
-        password.sendKeys("12345678Qw1!");
-        WebElement signInButton2 = driver.findElement(By.xpath("//button[./*[text()='Войти']]"));
+        WebElement password2 = driver.findElement(By.cssSelector(".sc-177u1yy-0.sc-rq8xzv-2.xkNdd"));
+        password2.click();
+        password2 = driver.findElement(By.cssSelector("input[type='password']"));
+        password2.sendKeys("12345678Qw1!");
+        WebElement signInButton2 = driver.findElement(By.cssSelector(".sc-9a4spb-0.eQlGvH.sc-11ptd2v-2-Component.cElCrZ"));
         signInButton2.click();
+        logger.info("Авторизация прошла успешно");
         logger.trace(driver);
     }
 }

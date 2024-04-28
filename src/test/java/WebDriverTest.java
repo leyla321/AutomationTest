@@ -18,6 +18,8 @@ public class WebDriverTest {
         ChromeOptions options = new ChromeOptions();
         options.addArguments("headless");
         driver = new ChromeDriver(options);
+        String url = System.getProperty("url");
+        driver.get(url);
     }
 
     @AfterEach
@@ -28,12 +30,11 @@ public class WebDriverTest {
 
     @Test
     public void openBrowserInHeadlessFormat() {
-        driver.get("https://duckduckgo.com/");
-        WebElement searchInput = driver.findElement(By.id("searchbox_input"));
+        WebElement searchInput = driver.findElement(By.cssSelector("#searchbox_input"));
         searchInput.sendKeys("ОТУС");
-        WebElement enterButton = driver.findElement(By.xpath("//button[@type='submit']"));
+        WebElement enterButton = driver.findElement(By.cssSelector("button[type='submit']"));
         enterButton.click();
-        WebElement firstResult = driver.findElement(By.xpath("//span[@class='EKtkFWMYpwzMKOYr0GYm LQVY1Jpkk8nyJ6HBWKAk' and contains(text(),'Онлайн‑курсы для профессионалов, дистанционное обучение современным ...')]"));
+        WebElement firstResult = driver.findElement(By.cssSelector("#r1-0 > div.ikg2IXiCD14iVX7AdZo1 > h2 > a"));
         String firstResultText = firstResult.getText();
         String expectedResult = "Онлайн‑курсы для профессионалов, дистанционное обучение современным ...";
         Assertions.assertEquals(expectedResult, firstResultText);
