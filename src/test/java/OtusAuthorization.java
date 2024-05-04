@@ -26,7 +26,7 @@ public class OtusAuthorization {
         driver = new ChromeDriver(options);
         driver.manage().window().maximize();
         String url = System.getProperty("url");
-        driver.get("https://otus.ru");
+        driver.get("url");
     }
 
     @AfterEach
@@ -44,11 +44,11 @@ public class OtusAuthorization {
         signInButton.click();
         WebElement email = driver.findElement(By.xpath("(//*[contains(.,'Электронная почта')])[2]"));
         email.click();
-        email.sendKeys("otus51423@mailto.plus");
+        email.sendKeys(username);
         WebElement password2 = driver.findElement(By.cssSelector(".sc-177u1yy-0.sc-rq8xzv-2.xkNdd"));
         password2.click();
         password2 = driver.findElement(By.cssSelector("input[type='password']"));
-        password2.sendKeys("12345678Qw1!");
+        password2.sendKeys(password);
         WebElement signInButton2 = driver.findElement(By.cssSelector(".sc-9a4spb-0.eQlGvH.sc-11ptd2v-2-Component.cElCrZ"));
         signInButton2.click();
         logger.info("Авторизация прошла успешно");
