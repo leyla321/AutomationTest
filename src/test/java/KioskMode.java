@@ -29,6 +29,7 @@ public class KioskMode {
     public void closeDriver() {
         if (driver != null)
             driver.close();
+        driver.quit();
     }
 
     @Test
