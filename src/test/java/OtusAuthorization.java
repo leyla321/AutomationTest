@@ -31,9 +31,9 @@ public class OtusAuthorization {
 
     @AfterEach
     public void closeDriver() {
-        if (driver != null)
-            driver.close();
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+        }
     }
 
     @Test
